@@ -81,7 +81,40 @@ class _DebugPageState extends State<DebugPage> {
               )
             ],            
           ),
-          body: Center(),
+          body: Column(
+            children: [
+              Container(
+                height: 60,
+                width: double.infinity,
+                color: Colors.transparent,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Utils.log('( $_fileName ) (event) clicked "Clear" button');
+                        },
+                        child: Text( 'Clear' ),
+                      ),
+                    ],
+                  ),
+                )
+              ),
+              Expanded(
+                flex :1,
+                child: Container(
+                  color: Colors.transparent,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SingleChildScrollView(
+                      child: Text( Config.log )),
+                  )
+                ),
+              ),              
+            ],
+          ),
         ),
       ),
     );
