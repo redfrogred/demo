@@ -20,10 +20,10 @@ class _StartPageState extends State<StartPage> {
   _StartPageState() {
     if ( Config.appInitialized == false ) {
       Config.appInitialized = true;
-      Utils.log('<<< ( StartPage.dart ) first init (version ${ Config.appVersion }) >>>', 0 );
+      Utils.log('( StartPage.dart ) first init (version ${ Config.appVersion })', 0 );
     }
     else {
-      Utils.log('<<< ( StartPage.dart ) init, again >>>', 0 );
+      Utils.log('( StartPage.dart ) init, again', 0 );
     }    
   }
 

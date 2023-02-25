@@ -18,7 +18,7 @@ class EndPage extends StatefulWidget {
 class _EndPageState extends State<EndPage> {
 
   _EndPageState() {
-    Utils.log('<<< ( EndPage.dart ) init >>>', 0 );
+    Utils.log('( EndPage.dart ) init', 0 );
   }
 
   // (this page) variables

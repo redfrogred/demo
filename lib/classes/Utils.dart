@@ -66,21 +66,21 @@ class Utils {
       if (kDebugMode) {
         print('${ start[num] } ====================================================');
       }
-      Config.log += '${ start[num] } ================================\n';
+      Config.log += '<tr><td colspan="2"><hr /></td?</tr>';
     }
 
     // print the message
       if (kDebugMode) {
         print('${ start[num] } (${ timeDiff() }) $message');
       }
-      Config.log += '${ start[num] } (${ timeDiff() }) $message\n';
+      Config.log += '<tr><td class="nowrap">(${ timeDiff() })</td><td>$message</td></tr>';
 
     // show highlighted?
     if ( highlight == true ) {
       if (kDebugMode) {
         print('${ start[num] } ====================================================');
       }
-      Config.log += '${ start[num] } ================================\n';
+      Config.log += '<tr><td colspan="2"><hr /></td?</tr>';
     }
 
 
