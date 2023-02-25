@@ -5,13 +5,12 @@ import 'package:flutter/material.dart';
 class Config {
   
   static const  String  appName                   = "demo";
-  static const  String  appVersion                = "1.0.ape.1";
-  static String         log                       = "";
+  static const  String  appVersion                = "1.0.ape.2";
+  static String         log                       = "";           //  keep a log of what is sent to console
   
   // 
-  static int            pops                      = 0;
-  static int            clicks                    = 0;
-  static String         fruit                     = "(none)";
+  static bool           appInitialized            = false;        //  after StartPage loaded, it is init'ed
+  
   
 
 

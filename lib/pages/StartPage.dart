@@ -18,7 +18,13 @@ class StartPage extends StatefulWidget {
 class _StartPageState extends State<StartPage> {
 
   _StartPageState() {
-    Utils.log('<<< ( StartPage.dart ) init >>>', 2, true );
+    if ( Config.appInitialized == false ) {
+      Config.appInitialized = true;
+      Utils.log('<<< ( StartPage.dart ) init for version ${ Config.appVersion } >>>', 2, true );
+    }
+    else {
+      Utils.log('<<< ( StartPage.dart ) init, again >>>', 2, true );
+    }    
   }
 
   // (this page) variables
@@ -28,8 +34,8 @@ class _StartPageState extends State<StartPage> {
   @override
   void initState() {
     super.initState();
-    Utils.log('( $_fileName ) initState()');
     WidgetsBinding.instance.addPostFrameCallback((_) => _addPostFrameCallbackTriggered(context));
+    Utils.log('( $_fileName ) initState()');
   }
 
   @override
