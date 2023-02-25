@@ -10,3 +10,5 @@ NEXT
 
 FUTURE
 * have boilerplate for starting projects
+* adjust gitignore
+    + so needed XML files are part of repo
