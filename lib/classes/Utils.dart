@@ -25,7 +25,7 @@ class Utils {
     else {
       diffNum = diff * .001;
     }
-    return diffNum.toStringAsFixed(1) + ' sec';
+    return '${diffNum.toStringAsFixed(1)} sec';
   }
 
   //  return a simplified version of Config.appVersion
@@ -37,20 +37,29 @@ class Utils {
   }
 
 
-  //  The "log" accepts 3 parameters, the later 2 optional:
+  //  The "log" accepts 2 parameters, the 2nd is optional:
   //    1 - the String message to "log"
-  //    2 - (optional) an int for "# of greater than signs" (2 is default)
-  //    3 - (optional) a bool for "highlight" ("false" is default)  
+  //    2 - (optional) an int called "num" for "number of greater than signs" (2 is default)
   //
-  //    If it is highlighted, it puts ""============" before and after...
-  static void log(String message, [ int num = 2, bool highlight = false ]){
-    
+  //    If num is empty, it defaults to 2.
+  //    If num is 0, the string will be highlighted (which just means it has a whack
+  //    of equal signs before and after)
+
+  static void log(String message, [ int num = 1 ]) {
+
+    bool highlight = false;
+
     List<String> start = [
-      '',
-      '> ',
-      '>> ',
-      '>>> '      
+      '',         
+      '>> ',    // num = 1    
+      '>>> ',   // num = 2 
+      '>>>> '   // num = 3    
     ];
+
+    if ( num == 0 ) {
+      highlight = true;
+      num = 1;
+    }
 
     // show highlighted?
     if ( highlight == true ) {

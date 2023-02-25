@@ -8,27 +8,21 @@ import '../providers/global_provider.dart';
 import '_AllPages.dart';
 // import '../pages/_AllPages.dart';
 
-class StartPage extends StatefulWidget {
-  const StartPage({ super.key });
+class DebugPage extends StatefulWidget {
+  const DebugPage({ super.key });
 
   @override
-  State createState() => _StartPageState();
+  State createState() => _DebugPageState();
 }
 
-class _StartPageState extends State<StartPage> {
+class _DebugPageState extends State<DebugPage> {
 
-  _StartPageState() {
-    if ( Config.appInitialized == false ) {
-      Config.appInitialized = true;
-      Utils.log('<<< ( StartPage.dart ) first init (version ${ Config.appVersion }) >>>', 0 );
-    }
-    else {
-      Utils.log('<<< ( StartPage.dart ) init, again >>>', 0 );
-    }    
+  _DebugPageState() {
+      Utils.log('<<< ( DebugPage.dart ) init >>>', 0 );
   }
 
   // (this page) variables
-  static const String _fileName = 'StartPage.dart';
+  static const String _fileName = 'DebugPage.dart';
   
   // (this page) init and dispose
   @override
@@ -69,38 +63,25 @@ class _StartPageState extends State<StartPage> {
         child: Scaffold(
           appBar: AppBar(
             title: Text( _fileName ),
+            automaticallyImplyLeading: false,
             centerTitle: true,
             actions: <Widget>[
               Visibility(
                 visible: Config.appDebugActive,
                 child: IconButton(
                   icon: Icon(
-                    Icons.bug_report,
+                    Icons.close,
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    Utils.log('( $_fileName ) (event) clicked "go to DebugPage()"');
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => DebugPage())
-                    ); 
+                    Utils.log('( $_fileName ) (event) clicked "close DebugPage()"');
+                    Navigator.of(context).pop(); 
                   },
                 ),
               )
             ],            
           ),
-          body: Center(
-            child: ElevatedButton(
-              onPressed: () {
-                Utils.log('( $_fileName ) (event) clicked "go to EndPage()"');
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => EndPage())
-                );                
-              },
-              // start of button appearance settings 
-              child: Text( 'Go to EndPage()' ),
-      
-            ),
-          ),
+          body: Center(),
         ),
       ),
     );

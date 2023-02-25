@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       initialRoute: 'StartPage',
       routes: {
         'StartPage': (context) => const StartPage(),
-        //'MiddlePage': (context) => const MiddlePage(),
+        'DebugPage': (context) => const DebugPage(),
         'EndPage': (context) => const EndPage(),
       },
     );
