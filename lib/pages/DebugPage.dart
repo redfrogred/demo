@@ -151,7 +151,7 @@ class _DebugPageState extends State<DebugPage> {
                       child: WebView(
                       
                               initialUrl: 'about:blank',
-                      
+                              javascriptMode: JavascriptMode.unrestricted,
                               onWebViewCreated: (WebViewController webViewController) {
                       
                                 _controller = webViewController;
@@ -176,7 +176,7 @@ class _DebugPageState extends State<DebugPage> {
 
   // #fafafa;
  _loadHtmlFromAssets() async {
-    _logHTML = '<!DOCTYPE html><html><head><style> html,body { font-size: 35px; font-weight: bold; background-color: #ffffff; line-height: 1.3; font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace; margin: 10px 5px; } hr { border-top: 2px solid #000; } table { margin: 0 5px; } td { padding: 2px 5px; vertical-align: top; } td.nowrap { white-space: nowrap; } </style></head><body><table>${Config.log}</table></body></html> ';
+    _logHTML = '<!DOCTYPE html><html><head><style> html,body { font-size: 35px; font-weight: bold; background-color: #ffffff; line-height: 1.3; font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace; margin: 10px 5px; } hr { border-top: 2px solid #000; } table { margin: 0 5px; } td { padding: 2px 5px; vertical-align: top; } td.nowrap { white-space: nowrap; } </style></head><body><table>${Config.log}</table><script> window.onload=function () { window.scrollTo(0, document.body.scrollHeight); } </script></body></html> ';
     String fileText = await rootBundle.loadString('assets/html/demo.html');
     _controller.loadUrl( Uri.dataFromString(
         //kNavigationExamplePage, //fileText,
