@@ -20,10 +20,10 @@ class _StartPageState extends State<StartPage> {
   _StartPageState() {
     if ( Config.appInitialized == false ) {
       Config.appInitialized = true;
-      Utils.log('<<< ( StartPage.dart ) init for version ${ Config.appVersion } >>>', 2, true );
+      Utils.log('( StartPage.dart ) first init (version ${ Config.appVersion })', 0 );
     }
     else {
-      Utils.log('<<< ( StartPage.dart ) init, again >>>', 2, true );
+      Utils.log('( StartPage.dart ) init, again', 0 );
     }    
   }
 
@@ -70,6 +70,23 @@ class _StartPageState extends State<StartPage> {
           appBar: AppBar(
             title: Text( _fileName ),
             centerTitle: true,
+            actions: <Widget>[
+              Visibility(
+                visible: Config.appDebugActive,
+                child: IconButton(
+                  icon: Icon(
+                    Icons.bug_report,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    Utils.log('( $_fileName ) (event) clicked "go to DebugPage()"');
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => DebugPage())
+                    ); 
+                  },
+                ),
+              )
+            ],            
           ),
           body: Center(
             child: ElevatedButton(
