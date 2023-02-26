@@ -117,7 +117,12 @@ class _DebugPageState extends State<DebugPage> {
                     children: [
                       ElevatedButton(
                         onPressed: () {
+                          Config.log = '';
+
                           Utils.log('( $_fileName ) (event) clicked "Clear" button');
+                          setState(() {
+                            _loadHtmlFromAssets();
+                          });
                         },
                         child: Text( 'Clear' ),
                         
@@ -133,20 +138,30 @@ class _DebugPageState extends State<DebugPage> {
                   width: double.infinity,
                   height: double.infinity,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child:                     WebView(
-                    
-                            initialUrl: 'about:blank',
-                    
-                            onWebViewCreated: (WebViewController webViewController) {
-                    
-                              _controller = webViewController;
-                    
-                              _loadHtmlFromAssets();
-                    
-                            },
-                    
-                          ),
+                    padding: const EdgeInsets.fromLTRB(8,0,8,8),
+                    child:                     Container(
+                      decoration: BoxDecoration(
+                color: Colors.yellow,
+                // Red border with the width is equal to 5
+                border: Border.all(
+                    width: 2, 
+                    color: Color(0xFF333333),
+                )
+          ),
+                      child: WebView(
+                      
+                              initialUrl: 'about:blank',
+                      
+                              onWebViewCreated: (WebViewController webViewController) {
+                      
+                                _controller = webViewController;
+                      
+                                _loadHtmlFromAssets();
+                      
+                              },
+                      
+                            ),
+                    ),
 
 
                   )
@@ -159,8 +174,9 @@ class _DebugPageState extends State<DebugPage> {
     );
   }
 
+  // #fafafa;
  _loadHtmlFromAssets() async {
-    _logHTML = '<!DOCTYPE html><html><head><style> html,body { font-size: 35px; background-color: #fafafa; } hr { border-top: 2px solid #000; } td { padding: 2px 5px; vertical-align: top; } td.nowrap { white-space: nowrap; } </style></head><body><table>${Config.log}</table></body></html> ';
+    _logHTML = '<!DOCTYPE html><html><head><style> html,body { font-size: 35px; font-weight: bold; background-color: #ffffff; line-height: 1.3; font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace; margin: 10px 5px; } hr { border-top: 2px solid #000; } table { margin: 0 5px; } td { padding: 2px 5px; vertical-align: top; } td.nowrap { white-space: nowrap; } </style></head><body><table>${Config.log}</table></body></html> ';
     String fileText = await rootBundle.loadString('assets/html/demo.html');
     _controller.loadUrl( Uri.dataFromString(
         //kNavigationExamplePage, //fileText,

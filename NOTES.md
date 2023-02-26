@@ -2,7 +2,7 @@
 
 This is where I am at with this project...
 
-LEFT OFF ( version "1.0.ape.6" )
+LEFT OFF ( version "1.0.ape.7" )
 * got webview working... 
 
 NEXT
